@@ -86,12 +86,6 @@ body {
   }
 }
 
-#submit:hover, #submit:active, #submit:focus {
-  background: #027991;
-  background: -webkit-gradient(linear, left top, right top, color-stop(8%, #027991), color-stop(99%, #3c0979));
-  background: linear-gradient(90deg, #027991 8%, #3c0979 99%);
-}
-
 @media (max-width: 768px) {
   #submit {
     margin-bottom: 20px;
@@ -111,6 +105,12 @@ body {
   outline: none;
   cursor: pointer;
   border-radius: 0.3rem;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+  background: #027991;
+  background: -webkit-gradient(linear, left top, right top, color-stop(8%, #027991), color-stop(99%, #3c0979));
+  background: linear-gradient(90deg, #027991 8%, #3c0979 99%);
 }
 
 #top-input {

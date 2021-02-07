@@ -77,16 +77,6 @@ body {
 }
 
 #submit {
-  &:hover,
-  &:active,
-  &:focus {
-    background: rgb(2, 121, 145);
-    background: linear-gradient(
-      90deg,
-      rgba(2, 121, 145, 1) 8%,
-      rgba(60, 9, 121, 1) 99%
-    );
-  }
   @media (max-width: 768px) {
     margin-bottom: 20px;
   }
@@ -104,6 +94,16 @@ body {
   outline: none;
   cursor: pointer;
   border-radius: 0.3rem;
+  &:hover,
+  &:active,
+  &:focus {
+    background: rgb(2, 121, 145);
+    background: linear-gradient(
+      90deg,
+      rgba(2, 121, 145, 1) 8%,
+      rgba(60, 9, 121, 1) 99%
+    );
+  }
 }
 
 #top-input {
