@@ -16,3 +16,5 @@ I also wanted to use more shades after trying TailwindCSS, and seeing how useful
 - Animate Coping
 - Validate User Hex Codes
 - Add Support to Copy Without #
+- Better Fonts/Weights Choice
+- Better Color Choice
