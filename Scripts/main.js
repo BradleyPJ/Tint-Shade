@@ -66,31 +66,39 @@ const createTable = () => {
   setTable();
 
   for (let i = 0; i <= rgbArray.length - 1; i += 1) {
-    document.getElementById('color-content').insertRow(-1).id = `tints-${i + 1}`;
-    document.getElementById('color-content').insertRow(-1).id = `tints-values-${i + 1}`;
-    document.getElementById('color-content').insertRow(-1).id = `shades-${i + 1}`;
-    document.getElementById('color-content').insertRow(-1).id = `shades-values-${i + 1}`;
+    document.getElementById("color-content").insertRow(-1).id = `tints-${i + 1
+      }`;
+    document.getElementById("color-content").insertRow(-1).id = `tints-values-${i + 1
+      }`;
+    document.getElementById("color-content").insertRow(-1).id = `shades-${i + 1
+      }`;
+    document
+      .getElementById("color-content")
+      .insertRow(-1).id = `shades-values-${i + 1}`;
   }
 
   for (let j = 0; j <= rgbArray.length - 1; j += 1) {
+    console.log(`j: ${j}`);
+    console.log(rgbArray[j].length - 1);
+
     for (let i = 0; i <= rgbArray[j].length - 1; i += 1) {
-      const colorBlockTints = `<td class='colorBlock' style = 'background-color:${rgbArray[0][i].tint.hex};' data-clipboard-text='${rgbArray[0][i].tint.hex}'></td>  `;
+      const colorBlockTints = `<td class='colorBlock' style = 'background-color:${rgbArray[j][i].tint.hex};' data-clipboard-text='${rgbArray[j][i].tint.hex}'></td>  `;
       document
         .querySelector(`#tints-${j + 1}`)
         .insertAdjacentHTML("beforeend", colorBlockTints);
 
-      const colorHexTints = `<td class='hex-value'>${rgbArray[0][i].tint.hex}</td>  `;
+      const colorHexTints = `<td class='hex-value'>${rgbArray[j][i].tint.hex}</td>  `;
       document
         .querySelector(`#tints-values-${j + 1}`)
         .insertAdjacentHTML("beforeend", colorHexTints);
 
-      const colorBlockShades = `<td  class='colorBlock' style = 'background-color:${rgbArray[0][10 - i].shade.hex
-        };'  data-clipboard-text='${rgbArray[0][10 - i].shade.hex}' > </td > `;
+      const colorBlockShades = `<td  class='colorBlock' style = 'background-color:${rgbArray[j][10 - i].shade.hex
+        };'  data-clipboard-text='${rgbArray[j][10 - i].shade.hex}' > </td > `;
       document
         .querySelector(`#shades-${j + 1}`)
         .insertAdjacentHTML("beforeend", colorBlockShades);
 
-      const colorHexShades = `<td class='hex-value' '>${rgbArray[0][10 - i].shade.hex
+      const colorHexShades = `<td class='hex-value' '>${rgbArray[j][10 - i].shade.hex
         }</td>  `;
       document
         .querySelector(`#shades-values-${j + 1}`)
@@ -100,9 +108,10 @@ const createTable = () => {
 };
 
 const setTable = () => {
-  document.getElementById("color-content").innerHTML = "<tr id = 'percentage-display'><tr>";
+  document.getElementById("color-content").innerHTML =
+    "<tr id = 'percentage-display'><tr>";
   for (let i = 0; i <= 110 - 1; i += 10) {
-    const colorPercentage = `<td class = "color-perc"><span>${i}%</span></td>`
+    const colorPercentage = `<td class = "color-perc"><span>${i}%</span></td>`;
     document
       .querySelector("#percentage-display")
       .insertAdjacentHTML("beforeend", colorPercentage);
