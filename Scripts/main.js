@@ -58,13 +58,11 @@ const getRGB = (colorObject) => {
     j += 0.1;
   }
   rgbArray.push(rgbInternalArray);
-  console.log(rgbArray);
   createTable();
 };
 
 const createTable = () => {
   setTable();
-
   for (let i = 0; i <= rgbArray.length - 1; i += 1) {
     document.getElementById("color-content").insertRow(-1).id = `tints-${i + 1
       }`;
@@ -78,9 +76,6 @@ const createTable = () => {
   }
 
   for (let j = 0; j <= rgbArray.length - 1; j += 1) {
-    console.log(`j: ${j}`);
-    console.log(rgbArray[j].length - 1);
-
     for (let i = 0; i <= rgbArray[j].length - 1; i += 1) {
       const colorBlockTints = `<td class='colorBlock' style = 'background-color:${rgbArray[j][i].tint.hex};' data-clipboard-text='${rgbArray[j][i].tint.hex}'></td>  `;
       document
@@ -121,6 +116,7 @@ const setTable = () => {
 document.getElementById("submit").addEventListener("click", () => {
   rgbArray = [];
   const input = document.getElementById("hexInput").value.split(" ");
+  localStorage.setItem("colors", JSON.stringify(input));
   input.forEach((i) => {
     getRGB(i);
   });
@@ -136,4 +132,13 @@ const randomHex = () => {
     return (~~(Math.random() * 16)).toString(16);
   });
 };
-getRGB(randomHex());
+
+let savedColor = JSON.parse(localStorage.getItem("colors"));
+if (savedColor === null) {
+  getRGB(randomHex());
+} else if (savedColor.length > 0) {
+  savedColor.forEach((i) => {
+    getRGB(i);
+  });
+}
+
