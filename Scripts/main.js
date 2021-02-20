@@ -1,12 +1,17 @@
 let rgbArray = [];
+let hashState = true;
 
 const componentToHex = (c) => {
   const hex = c.toString(16);
   return hex.length == 1 ? "0" + hex : hex;
 };
 
-const rgbToHex = (r, g, b) => {
-  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+const rgbToHex = (r, g, b, hash) => {
+  if (hash == false || hash == "false") {
+    return componentToHex(r) + componentToHex(g) + componentToHex(b);
+  } else {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+  }
 };
 
 const hexToRgb = (hex) => {
@@ -43,16 +48,19 @@ const getRGB = (colorObject) => {
         r: getTint(color.r, j),
         g: getTint(color.g, j),
         b: getTint(color.b, j),
+        hex: function (hash) {
+          return rgbToHex(this.r, this.g, this.b, hash);
+        }
       },
       shade: {
         r: getShade(color.r, j),
         g: getShade(color.g, j),
         b: getShade(color.b, j),
+        hex: function (hash) {
+          return rgbToHex(this.r, this.g, this.b, hash);
+        }
       },
     };
-
-    rgb.tint.hex = rgbToHex(rgb.tint.r, rgb.tint.g, rgb.tint.b);
-    rgb.shade.hex = rgbToHex(rgb.shade.r, rgb.shade.g, rgb.shade.b);
 
     rgbInternalArray.push(rgb);
     j += 0.1;
@@ -77,23 +85,23 @@ const createTable = () => {
 
   for (let j = 0; j <= rgbArray.length - 1; j += 1) {
     for (let i = 0; i <= rgbArray[j].length - 1; i += 1) {
-      const colorBlockTints = `<td class='colorBlock' style = 'background-color:${rgbArray[j][i].tint.hex};' data-clipboard-text='${rgbArray[j][i].tint.hex}'></td>  `;
+      const colorBlockTints = `<td class='colorBlock' style = 'background-color:${rgbArray[j][i].tint.hex()};' data-clipboard-text='${rgbArray[j][i].tint.hex(hashState)}'></td>  `;
       document
         .querySelector(`#tints-${j + 1}`)
         .insertAdjacentHTML("beforeend", colorBlockTints);
 
-      const colorHexTints = `<td class='hex-value'>${rgbArray[j][i].tint.hex}</td>  `;
+      const colorHexTints = `<td class='hex-value'>${rgbArray[j][i].tint.hex(hashState)}</td>  `;
       document
         .querySelector(`#tints-values-${j + 1}`)
         .insertAdjacentHTML("beforeend", colorHexTints);
 
-      const colorBlockShades = `<td  class='colorBlock' style = 'background-color:${rgbArray[j][10 - i].shade.hex
-        };'  data-clipboard-text='${rgbArray[j][10 - i].shade.hex}' > </td > `;
+      const colorBlockShades = `<td  class='colorBlock' style = 'background-color:${rgbArray[j][10 - i].shade.hex()
+        };'  data-clipboard-text='${rgbArray[j][10 - i].shade.hex(hashState)}' > </td > `;
       document
         .querySelector(`#shades-${j + 1}`)
         .insertAdjacentHTML("beforeend", colorBlockShades);
 
-      const colorHexShades = `<td class='hex-value' '>${rgbArray[j][10 - i].shade.hex
+      const colorHexShades = `<td class='hex-value' '>${rgbArray[j][10 - i].shade.hex(hashState)
         }</td>  `;
       document
         .querySelector(`#shades-values-${j + 1}`)
@@ -127,18 +135,39 @@ document.getElementById("get-color").addEventListener("click", () => {
   return getRGB(randomHex());
 });
 
+document.getElementById("includeHash").addEventListener("change", () => {
+  if (document.getElementById("includeHash").checked) {
+    hashState = false
+    localStorage.setItem("hashState", hashState);
+    loadSavedColor();
+  } else {
+    hashState = true
+    localStorage.setItem("hashState", hashState);
+    loadSavedColor();
+  }
+});
+
 const randomHex = () => {
   return "#000000".replace(/0/g, function () {
     return (~~(Math.random() * 16)).toString(16);
   });
 };
 
-let savedColor = JSON.parse(localStorage.getItem("colors"));
-if (savedColor === null) {
-  getRGB(randomHex());
-} else if (savedColor.length > 0) {
-  savedColor.forEach((i) => {
-    getRGB(i);
-  });
-}
+const loadSavedColor = () => {
+  let savedColor = JSON.parse(localStorage.getItem("colors"));
+  rgbArray = [];
+  if (savedColor === null) {
+    getRGB(randomHex());
+  } else if (savedColor.length > 0) {
+    savedColor.forEach((i) => {
+      getRGB(i);
+    });
+  }
+};
 
+hashState = localStorage.getItem("hashState");
+
+if (localStorage.getItem("hashState") == false) {
+  document.getElementById("includeHash").checked = true
+}
+loadSavedColor();
