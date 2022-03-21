@@ -144,6 +144,7 @@ document.getElementById("submit").addEventListener("click", () => {
       }
     }
   });
+  (Object.keys(input).length === 0) ? alert("Please enter a valid hex code") : console.log(`${input.length} : false`)
   localStorage.setItem("colors", JSON.stringify(input));
   input.forEach((i) => {
     getRGB(i);
@@ -174,15 +175,17 @@ const randomHex = () => {
 };
 
 const loadSavedColor = () => {
-  let savedColor = JSON.parse(localStorage.getItem("colors"));
+  let savedColor = [];
+  (JSON.parse(localStorage.getItem("colors"))) ? savedColor = JSON.parse(localStorage.getItem("colors")) : "Boop"
   rgbArray = [];
-  if (savedColor == null) {
-    getRGB(randomHex())
-  } else {
+  (Object.keys(savedColor).length === 0) ? getRGB(randomHex()) : () => {
     savedColor.forEach((i) => {
       getRGB(i);
     })
   }
+  savedColor.forEach((i) => {
+    getRGB(i);
+  })
 };
 
 hashState = localStorage.getItem("hashState");
