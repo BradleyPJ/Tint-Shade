@@ -1,5 +1,4 @@
 import ClipboardJS from 'clipboard';
-import '../Styles/global.css';
 
 new ClipboardJS('.colorBlock');
 
