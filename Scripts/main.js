@@ -135,6 +135,15 @@ const setTable = () => {
 document.getElementById("submit").addEventListener("click", () => {
   rgbArray = [];
   const input = document.getElementById("hexInput").value.split(" ");
+  // Remove all any input values from the array if they are not hex colors
+  input.forEach((i) => {
+    if (checkHex(i) === false) {
+      let index = input.indexOf(i)
+      if (index > -1) {
+        input.splice(index, 1)
+      }
+    }
+  });
   localStorage.setItem("colors", JSON.stringify(input));
   input.forEach((i) => {
     getRGB(i);
@@ -167,14 +176,13 @@ const randomHex = () => {
 const loadSavedColor = () => {
   let savedColor = JSON.parse(localStorage.getItem("colors"));
   rgbArray = [];
-  // Check stored "colors" to see if they are 6hex hexcode
-  savedColor.forEach((i) => {
-    if (checkHex(i)) {
+  if (savedColor == null) {
+    getRGB(randomHex())
+  } else {
+    savedColor.forEach((i) => {
       getRGB(i);
-    } else {
-      getRGB(randomHex());
-    }
-  })
+    })
+  }
 };
 
 hashState = localStorage.getItem("hashState");
