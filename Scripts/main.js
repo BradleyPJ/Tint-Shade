@@ -144,8 +144,7 @@ document.getElementById("submit").addEventListener("click", () => {
       }
     }
   });
-  (Object.keys(input).length === 0) ? alert("Please enter a valid hex code") : console.log(`${input.length} : false`)
-  localStorage.setItem("colors", JSON.stringify(input));
+  (Object.keys(input).length === 0) ? alert("Please enter a valid hex code") : localStorage.setItem("colors", JSON.stringify(input))
   input.forEach((i) => {
     getRGB(i);
   });
