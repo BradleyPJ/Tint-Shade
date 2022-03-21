@@ -2,7 +2,7 @@
 body {
   background-color: #1a1a1a;
   padding: 0 1rem;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 * {
@@ -18,7 +18,7 @@ body {
 }
 
 .colorBlock:focus::after, .colorBlock:active::after {
-  content: "";
+  content: '';
   display: block;
   background-color: #fff;
   position: absolute;
@@ -41,7 +41,7 @@ body {
 
 .colorBlock::before, .colorBlock::before {
   opacity: 0;
-  content: "";
+  content: '';
   display: block;
   background-color: #fff;
   position: absolute;
@@ -63,7 +63,7 @@ body {
 }
 
 .colorBlock:hover::before {
-  content: "";
+  content: '';
   opacity: 1;
   display: block;
   background-color: #fff;
@@ -239,7 +239,7 @@ tr {
 
 .slider::before {
   position: absolute;
-  content: "";
+  content: '';
   height: 26px;
   width: 26px;
   left: 4px;

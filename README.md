@@ -2,7 +2,7 @@
 
 ## What is the Tint Shade Generator?
 
-The generator will _currently_ take 1 hex color and out put tints and shades in 10% increments
+The generator will _currently_ take 1 (leave a space for more) hex color and out put tints and shades in 10% increments
 
 ## Why did i make this
 

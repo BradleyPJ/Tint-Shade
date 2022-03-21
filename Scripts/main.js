@@ -1,3 +1,8 @@
+import ClipboardJS from 'clipboard';
+import '../Styles/global.css';
+
+new ClipboardJS('.colorBlock');
+
 let rgbArray = [];
 let hashState = true;
 
