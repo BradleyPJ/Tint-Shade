@@ -6,6 +6,12 @@ new ClipboardJS('.colorBlock');
 let rgbArray = [];
 let hashState = true;
 
+const checkHex = (input) => {
+  //checks if 6 hex
+  const regHex = /^#[0-9A-F]{6}$/i;
+  return regHex.test(input);
+}
+
 const componentToHex = (c) => {
   const hex = c.toString(16);
   return hex.length == 1 ? "0" + hex : hex;
@@ -161,13 +167,14 @@ const randomHex = () => {
 const loadSavedColor = () => {
   let savedColor = JSON.parse(localStorage.getItem("colors"));
   rgbArray = [];
-  if (savedColor === null) {
-    getRGB(randomHex());
-  } else if (savedColor.length > 0) {
-    savedColor.forEach((i) => {
+  // Check stored "colors" to see if they are 6hex hexcode
+  savedColor.forEach((i) => {
+    if (checkHex(i)) {
       getRGB(i);
-    });
-  }
+    } else {
+      getRGB(randomHex());
+    }
+  })
 };
 
 hashState = localStorage.getItem("hashState");
