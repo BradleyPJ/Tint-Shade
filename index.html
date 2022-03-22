@@ -1,70 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="Tint & Shade Generator" />
-		<meta name="title" content="Tint and Shade Generator" />
-		<title>Tint & Shade</title>
-		<meta name="theme-color" content="#1a1a1a" />
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:title" content="Tint and Shade Generator" />
-		<meta
-			property="twitter:description"
-			content="Generator your own tints and shades with this"
-		/>
-		<meta property="twitter:image" content="#027991" />
-		<link rel="stylesheet" href="/Styles/global.css" />
-	</head>
-
-	<body>
-		<div class="wrapper">
-			<div id="top-input">
-				<h1 id="Title">Tint and Shades</h1>
-				<h2>
-					<label id="hexInput-label" for="hexInput">Enter Hex Color</label>
-				</h2>
-				<textarea
-					id="hexInput"
-					name="hexInput"
-					type="text"
-					autocomplete="off"
-					autocorrect="off"
-					autocapitalize="none"
-					spellcheck="false"
-				></textarea>
-				<div id="includeHashWrap">
-					<label id="switch">
-						<input id="includeHash" type="checkbox" />
-						<span class="slider round"></span>
-					</label>
-					<span id="includeHashMessage">Don't include HashTag in results</span>
-				</div>
-				<div class="buttons">
-					<input
-						id="submit"
-						class="btn"
-						type="submit"
-						value="Get Your Colors"
-					/>
-					<input
-						id="get-color"
-						class="btn"
-						type="submit"
-						value="Random Color"
-					/>
-				</div>
-			</div>
-
-			<div class="container">
-				<div id="color-wrapper">
-					<table id="color-content"></table>
-				</div>
-			</div>
-		</div>
-
-		<script type="module" src="./Scripts/main.js"></script>
-	</body>
-	<script></script>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>

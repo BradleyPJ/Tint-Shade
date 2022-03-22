@@ -1,21 +1,18 @@
 {
-	"name": "tint-shade",
-	"private": true,
-	"version": "0.0.0",
-	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"preview": "vite preview",
-		"postcss:watch": "postcss "
-	},
-	"devDependencies": {
-		"postcss": "^8.4.12",
-		"postcss-cli": "^9.1.0",
-		"postcss-import": "^14.0.2",
-		"postcss-preset-env": "^7.4.3",
-		"vite": "^2.8.0"
-	},
-	"dependencies": {
-		"clipboard": "^2.0.10"
-	}
+  "name": "vue-tint-shade",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "clipboard": "^2.0.10",
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.2.0",
+    "vite": "^2.8.0"
+  }
 }

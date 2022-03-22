@@ -1,20 +1,7 @@
-# Tint-Shade-Generator
+# Vue 3 Tint and Shade
 
-## What is the Tint Shade Generator?
+The most basic conversion, while i learn
 
-The generator will _currently_ take 1 (leave a space for more) hex color and out put tints and shades in 10% increments
+## Recommended IDE Setup
 
-## Why did i make this
-
-The tint-shade generator was made firstly as practice for javascript as its been years since i wrote any javascript.
-
-I also wanted to use more shades after trying TailwindCSS, and seeing how useful shades of the same color are.
-
-## TODO
-
-- ~~Add Support for Multiple Hex Codes~~
-- Animate Coping
-- Validate User Hex Codes
-- Add Support to Copy Without #
-- Better Fonts/Weights Choice
-- Better Color Choice
+- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
